@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <main class="">
+    <section>
+        <nav class="flex justify-content space-x-4 bg-indigo-800 text-white p-3">
+           <a class="text-3xl px-2 font-mono font-bold" href="{% url 'home' %}">Tradikte</a>
+        </nav>
+    </section>
+    <section class="mt-4">
+
+      <form action="{% url 'home' %}" method="POST">
+        {% csrf_token %}
+        <div class="flex flex-row p-4">
+          <div class="basis-2/5">
+            <label for="exampleFormControlTextarea1" class="form-label inline-block mb-2 text-gray-700"
+              >
+              Your language
+              {% if ori  %}
+               <span class="uppercase"> {{ ori }}</span> <img src="https://www.worldatlas.com/r/w960-q80/img/flag/{{ ori }}-flag.jpg" alt="abc" width="20">
+              {% endif %}
+              </label
+            >
+            <textarea
+              class="
+                form-control
+                block
+                w-full
+                px-3
+                py-1.5
+                text-base
+                font-normal
+                text-gray-700
+                bg-white bg-clip-padding
+                border border-solid border-gray-300
+                rounded
+                transition
+                ease-in-out
+                m-0
+                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+              "
+              id="exampleFormControlTextarea1"
+              rows="3"
+              placeholder="Your message"
+              name="lang1"
+            >{{ send }}</textarea>
+          </div>
+
+           <div class="basis-1/5 text-center mt-10">
+            <button type="submit" class="bg-indigo-800 text-white py-2 px-3 hover:bg-indigo-600 rounded shadow uppercase hover:drop-shadow-md">translate</button>
+           </div>
+
+           <div class="basis-2/5 ">
+            <label for="exampleFormControlTextarea1" class="form-label inline-block mb-2 text-gray-700"
+              >Result
+              {% if dest  %}
+               <span class="uppercase"> {{ dest }}</span> <img src="https://www.worldatlas.com/r/w960-q80/img/flag/us-flag.jpg" alt="abc" width="20">
+              {% endif %}
+              </label
+            >
+            <textarea
+              class="
+                form-control
+                block
+                w-full
+                px-3
+                py-1.5
+                text-base
+                font-normal
+                text-gray-700
+                bg-white bg-clip-padding
+                border border-solid border-gray-300
+                rounded
+                transition
+                ease-in-out
+                m-0
+                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+              "
+              id="exampleFormControlTextarea1"
+              rows="3"
+              placeholder="Your message"
+              name="lan2"
+             
+            >{{ text }}</textarea>
+          </div>
+        </div>
+      </form>
+
+    </section>
+  </main>
+</body>
+</html>
